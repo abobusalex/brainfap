@@ -1,11 +1,13 @@
 from sys import argv
 import sys
+import random
 
 def interpretate(file):
-    file = [x for x in file if x in ("-+,.><[]") ]
-    pointer = 0
-    fileptr = 0
-    dataline = [0] * 4096
+    file = [x for x in file if x in ("-+,.><[]!1*^@20") ] # clear code text
+    pointer = 0 # dataline pointer
+    fileptr = 0 # file pointer
+    stack = []  # stack
+    dataline = [0] * 4096 # data line
     while (fileptr < len(file)):
         char = file[fileptr]
         # print(char)
@@ -27,6 +29,12 @@ def interpretate(file):
                 
                 lb = 0
                 while (True):
+                    # How this works:
+                    # it collects in lb (left bracket)
+                    # quantity of [ when going forward
+                    # to code. it decreases lb when
+                    # ] has appeared. if [s and ]s 
+                    # are even, it breaks the loop
                     fileptr += 1
                     char = file[fileptr]
                     # print(fileptr, char, lb)
@@ -50,7 +58,23 @@ def interpretate(file):
                         continue
                     if (char == "[" and rb == 0):
                         break
-                
+        # extended commands
+        if (char == "!"):
+            print(dataline[pointer], end="")
+        if (char == "1"):
+            print(dataline[pointer])
+        if (char == "*"):
+            stack.append(dataline[pointer])
+        if (char == "^"):
+            dataline[pointer] = stack.pop()
+        if (char == "@"):
+            dataline[pointer] = random.randint(0, 255)
+        if (char == "2"):
+            dataline[pointer] *= 2
+        if (char == "0"):
+            dataline[pointer] = 0
+            
+        
         fileptr += 1
 
 
