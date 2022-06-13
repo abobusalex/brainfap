@@ -24,14 +24,14 @@ Useless python driven brainfuck extended implementaion.
 
 ### Использовать 
 
-``
+```
 usage: bfapc.py file.bfap
 
-``
+```
 
 ### Пример
 
-``
+```
 input:
 ++++++++++>+<[>21<-]
 
@@ -47,7 +47,7 @@ output:
 512
 1024
 
-``
+```
 
 ### Больше
 
