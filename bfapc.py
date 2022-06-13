@@ -5,7 +5,7 @@ def interpretate(file):
     file = [x for x in file if x in ("-+,.><[]") ]
     pointer = 0
     fileptr = 0
-    dataline = [0] * 5024
+    dataline = [0] * 4096
     while (fileptr < len(file)):
         char = file[fileptr]
         # print(char)
