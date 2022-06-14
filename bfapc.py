@@ -72,7 +72,7 @@ def interpretate(file):
         if (char == "2"):
             dataline[pointer] *= 2
         if (char == "0"):
-            dataline[pointer] = 0
+            pointer = 0
             
         
         fileptr += 1
